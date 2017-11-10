@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Lab1JC" x:Class="Lab1JC.Lab1JCPage">
+	<StackLayout>
+        <Label Text="Search" Margin="10,20,10,0"/>
+        <Entry Text="{Binding FilterValue}" Margin="10,0,10,0"/>
+        <ListView ItemsSource="{Binding PersonList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Description}"/>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+        </ListView>
+        <!-- BAD PRACTICE TO USE CLICK EVENTS OF VIEW FILE
+        <Button Text="Crear Persona" Clicked="EventoClick"/>
+        -->
+        <Label Text="New Person" Margin="10,0,10,0"/>
+        <Entry Text="{Binding NewName}" Margin="10,0,10,0"/>
+        <Button Text="Create Person" Command="{Binding AddPersonCommand}"/>
+    </StackLayout>
+</ContentPage>
