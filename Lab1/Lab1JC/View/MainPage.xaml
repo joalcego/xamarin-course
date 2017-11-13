@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Lab1JC" x:Class="Lab1JC.Lab1JCPage">
-	<StackLayout>
-        <Label Text="Search" Margin="10,20,10,0"/>
-        <Entry Text="{Binding FilterValue}" Margin="10,0,10,0"/>
-        <ListView ItemsSource="{Binding PersonList}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Lab1JC" 
+             x:Name="Lab1JCPage"
+             x:Class="Lab1JC.Lab1JCPage">
+	<StackLayout Margin="0,20,0,0">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Search" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Text="{Binding FilterValue}" Placeholder="Filter something" Margin="10,0,10,0" WidthRequest="150"
+                   HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+        </StackLayout>
+        <ListView ItemsSource="{Binding PersonList}" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Description}"/>
+                    <!--
+                        <TextCell Text="{Binding Name}" Detail="{Binding Description}"/>
+                    -->
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                            <Image Source="x-icon.png" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.RemovePersonCommand, Source={x:Reference Lab1JCPage}}" 
+                                                          CommandParameter="{Binding Id}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
               </ListView.ItemTemplate>
         </ListView>

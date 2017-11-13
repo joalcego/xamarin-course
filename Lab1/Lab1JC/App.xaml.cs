@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Lab1JC.View;
 
 namespace Lab1JC
 {
@@ -8,7 +9,8 @@ namespace Lab1JC
         {
             InitializeComponent();
 
-            MainPage = new Lab1JCPage();
+            //MainPage = new Lab1JCPage();
+            MainPage = new FormatPage();
         }
 
         protected override void OnStart()

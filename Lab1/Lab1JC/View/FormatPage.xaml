@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Lab1JC.View.FormatPage">
+	<StackLayout Margin="0,20,0,0">
+        <Grid Padding="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Image Source="user-icon.png" Grid.Row="0" Grid.Column="0"/>
+            <StackLayout Grid.Row="0" Grid.Column="1 " BackgroundColor="Aqua">
+                <Label Text="My name"/>
+                <Label Text="My description"/>
+            </StackLayout>
+        </Grid>
+        <StackLayout VerticalOptions="FillAndExpand" Padding="5,5,5,5" BackgroundColor="Lime" HeightRequest="500">
+            <BoxView VerticalOptions="Start" HeightRequest="100" BackgroundColor="Green"/>
+            <BoxView VerticalOptions="EndAndExpand" HeightRequest="100" BackgroundColor="Red"/>
+        </StackLayout>
+        <Button Text="Awesome button" VerticalOptions="EndAndExpand"/>
+    </StackLayout>
+</ContentPage>
