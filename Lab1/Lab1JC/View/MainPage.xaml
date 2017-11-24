@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:Lab1JC" 
-             x:Name="Lab1JCPage"
-             x:Class="Lab1JC.Lab1JCPage">
-	<StackLayout Margin="0,20,0,0">
+             x:Name="MainPage"
+             x:Class="Lab1JC.View.MainPage"
+             Title="Main Page">
+    <StackLayout Margin="0,20,0,0">
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
             <Label Text="Search" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Entry Text="{Binding FilterValue}" Placeholder="Filter something" Margin="10,0,10,0" WidthRequest="150"
@@ -13,18 +14,14 @@
         <ListView ItemsSource="{Binding PersonList}" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--
-                        <TextCell Text="{Binding Name}" Detail="{Binding Description}"/>
-                    -->
                     <ViewCell>
                         <StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.GoPersonDetailsCommand, Source={x:Reference MainPage}}" 
+                                                      CommandParameter="{Binding Id}"/>
+                            </StackLayout.GestureRecognizers>
                             <Label Text="{Binding Name}" VerticalOptions="Center"/>
-                            <Image Source="x-icon.png" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.RemovePersonCommand, Source={x:Reference Lab1JCPage}}" 
-                                                          CommandParameter="{Binding Id}"/>
-                                </Image.GestureRecognizers>
-                            </Image>
+                            <Image Source="x-icon.png" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

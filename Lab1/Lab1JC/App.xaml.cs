@@ -9,8 +9,9 @@ namespace Lab1JC
         {
             InitializeComponent();
 
-            //MainPage = new Lab1JCPage();
-            MainPage = new FormatPage();
+            MainPage = new LoginPage();
+
+            //App.Current.MainPage = new MasterPage();
         }
 
         protected override void OnStart()

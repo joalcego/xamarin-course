@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Lab1JC.View.LoginPage"
+             BackgroundColor="#354b60">
+	<ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+            <StackLayout BackgroundColor="#f1f1f1" Padding="30,50,30,50">
+                <Label Text="Ingresar" HorizontalOptions="Center" HorizontalTextAlignment="Center" Font="Bold,20" Margin="0,0,0,20"/>
+                <Label Text="Correo Electronico"/>
+                <Entry Text="{Binding EmailAddress}" HorizontalOptions="FillAndExpand"/>
+                <Label Text="Contrasena"/>
+                <Entry Text="{Binding Password}" IsPassword="true" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Ingresar" Command="{Binding SignInCommand}" CommandParameter="{Binding .}" 
+                    BackgroundColor="#3f5672" HorizontalOptions="FillAndExpand" VerticalOptions="End"
+                    TextColor="#ffffff" Margin="0,20,0,0"/>
+            </StackLayout>
+        </AbsoluteLayout>
+	</ContentPage.Content>
+</ContentPage>

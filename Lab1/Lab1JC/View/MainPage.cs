@@ -1,15 +1,20 @@
-﻿using Xamarin.Forms;
-using Lab1JC.ViewModel;
+﻿using System;
 
-namespace Lab1JC
+using Xamarin.Forms;
+
+namespace Lab1JC.View
 {
-    public partial class Lab1JCPage : ContentPage
+    public class MainPage : ContentPage
     {
-        public Lab1JCPage()
+        public MainPage()
         {
-            InitializeComponent();
-
-            BindingContext = new PersonViewModel();
+            Content = new StackLayout
+            {
+                Children = {
+                    new Label { Text = "Hello ContentPage" }
+                }
+            };
         }
     }
 }
+

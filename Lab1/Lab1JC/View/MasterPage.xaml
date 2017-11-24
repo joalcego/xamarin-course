@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:pages="clr-namespace:Lab1JC.View"
+    x:Class="Lab1JC.View.MasterPage"
+    Title="Master Page">
+	<MasterDetailPage.Master>
+        <pages:HomeMenu x:Name="MainMenu"/>
+	</MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:MainPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

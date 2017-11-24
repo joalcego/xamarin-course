@@ -7,12 +7,15 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms.Internals;
+using Lab1JC.View;
 
 namespace Lab1JC.ViewModel
 {
     public class PersonViewModel : BaseViewModel
     {
         #region Properties
+        private static PersonViewModel instance;
+        private PersonModel currentPerson;
         private List<PersonModel> originalPersonList;
         private ObservableCollection<PersonModel> personList;
         public ObservableCollection<PersonModel> PersonList
@@ -57,28 +60,59 @@ namespace Lab1JC.ViewModel
             }
         }
 
+        public PersonModel CurrentPerson {
+            get
+            {
+                return currentPerson;
+            }
+            set
+            {
+                currentPerson = value;
+                OnPropertyChanged("CurrentPerson");
+            }
+        }
+
         public ICommand AddPersonCommand { get; set; }
         public ICommand RemovePersonCommand { get; set; }
+        public ICommand GoPersonDetailsCommand { get; set; }
 
         #endregion
 
-        public PersonViewModel()
+        #region Constructors
+
+        private PersonViewModel()
         {
-            InitClass();
-            InitCommand();
+            InitProperties();
+            InitCommands();
         }
 
-        private void InitClass()
+        private void InitProperties()
         {
             PersonList = PersonModel.FindPeople();
             originalPersonList = PersonList.ToList();
         }
 
-        private void InitCommand()
+        private void InitCommands()
         {
             AddPersonCommand = new Command(AddPerson);
             RemovePersonCommand = new Command<int>(RemovePerson);
+            GoPersonDetailsCommand = new Command<int>(GoPersonDetails);
         }
+
+        public static PersonViewModel GetInstance() {
+            if(instance == null) {
+                instance = new PersonViewModel();
+            }
+            return instance;
+        }
+
+        public static void DeleteInstance() {
+            if(instance != null) {
+                instance = null;
+            }
+        }
+
+        #endregion
 
         #region Methods
 
@@ -94,11 +128,16 @@ namespace Lab1JC.ViewModel
             PersonList = new ObservableCollection<PersonModel>(originalPersonList);
         }
 
+        private void GoPersonDetails(int id) {
+            CurrentPerson = PersonList.FirstOrDefault(p => p.Id == id);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PersonDetail());
+        }
+
         private void FilterPeople(string value)
         {
             value = value.ToLower();
             PersonList.Clear();
-            PersonList = new ObservableCollection<PersonModel>(originalPersonList.Where(p => p.Name.ToLower().Contains(value) || p.Description.ToLower().Contains(value) || p.LastName.ToLower().Contains(value)));
+            PersonList = new ObservableCollection<PersonModel>(originalPersonList.Where(p => p.Name.ToLower().Contains(value) || p.LastName.ToLower().Contains(value)));
             //originalPersonList.Where(p => p.Name.ToLower().Contains(value) || p.Description.ToLower().Contains(value) || p.LastName.ToLower().Contains(value)).ForEach(p => PersonList.Add((p)));
         }
 
