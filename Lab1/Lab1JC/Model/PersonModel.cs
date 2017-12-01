@@ -38,7 +38,27 @@ namespace Lab1JC.Model
                     BirthDate = new DateTime(1995, 4, 28),
                     IsMale = true,
                     Notes = "There are not notes",
-                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png"
+                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png",
+                    Sales = new ObservableCollection<SaleModel>() {
+                        new SaleModel() {
+                            Id = 1,
+                            Amount = 1,
+                            Product = new ProductModel() {
+                                Id = 1,
+                                Description = "Lavadora",
+                                Price = 400000
+                            }
+                        },
+                        new SaleModel() {
+                            Id = 2,
+                            Amount = 3,
+                            Product = new ProductModel() {
+                                Id = 2,
+                                Description = "Cama",
+                                Price = 200000
+                            }
+                        }
+                    }
                 },
                 new PersonModel() {
                     Id = 2,
@@ -49,7 +69,18 @@ namespace Lab1JC.Model
                     BirthDate = new DateTime(1990, 12, 3),
                     IsMale = true,
                     Notes = "There are not notes",
-                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png"
+                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png",
+                    Sales = new ObservableCollection<SaleModel>() {
+                        new SaleModel() {
+                            Id = 3,
+                            Amount = 2,
+                            Product = new ProductModel() {
+                                Id = 1,
+                                Description = "Lavadora",
+                                Price = 400000
+                            }
+                        },
+                    }
                 },
                 new PersonModel() {
                     Id = 3,
@@ -60,7 +91,8 @@ namespace Lab1JC.Model
                     BirthDate = new DateTime(1986, 8, 4),
                     IsMale = false,
                     Notes = "There are not notes",
-                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png"
+                    Picture = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png/512/user-alt.png",
+                    Sales = new ObservableCollection<SaleModel>()
                 },
             };
         }

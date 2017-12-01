@@ -75,6 +75,7 @@ namespace Lab1JC.ViewModel
         public ICommand AddPersonCommand { get; set; }
         public ICommand RemovePersonCommand { get; set; }
         public ICommand GoPersonDetailsCommand { get; set; }
+        public ICommand GoAddSaleCommand { get; set; }
 
         #endregion
 
@@ -97,6 +98,7 @@ namespace Lab1JC.ViewModel
             AddPersonCommand = new Command(AddPerson);
             RemovePersonCommand = new Command<int>(RemovePerson);
             GoPersonDetailsCommand = new Command<int>(GoPersonDetails);
+            GoAddSaleCommand = new Command(GoAddSale);
         }
 
         public static PersonViewModel GetInstance() {
@@ -131,6 +133,12 @@ namespace Lab1JC.ViewModel
         private void GoPersonDetails(int id) {
             CurrentPerson = PersonList.FirstOrDefault(p => p.Id == id);
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PersonDetail());
+        }
+
+        private void GoAddSale()
+        {
+            //CurrentPerson = PersonList.FirstOrDefault(p => p.Id == id);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new AddSalePage());
         }
 
         private void FilterPeople(string value)

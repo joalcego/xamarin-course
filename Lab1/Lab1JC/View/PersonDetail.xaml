@@ -8,15 +8,25 @@
             <StackLayout>
                 <Image Source="user-icon.png" WidthRequest="40" HeightRequest="40"/>
             </StackLayout>
-            <StackLayout BackgroundColor="Aqua" VerticalOptions="Center">
+            <StackLayout VerticalOptions="Center">
                 <Label Text="{Binding CurrentPerson.Name}"/>
                 <Label Text="{Binding CurrentPerson.BirthDate}"/>
             </StackLayout>
         </StackLayout>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="Lime">
-            <BoxView VerticalOptions="Start" HeightRequest="100" BackgroundColor="Green"/>
-            <BoxView VerticalOptions="EndAndExpand" HeightRequest="100" BackgroundColor="Red"/>
-        </StackLayout>
-        <Button Text="Awesome button" VerticalOptions="End" HeightRequest="50"/>
+        <ListView ItemsSource="{Binding CurrentPerson.Sales}" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Product.Description}" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Text="{Binding Amount, StringFormat='x {0}'}" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Text="{Binding TotalPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            <Image Source="x-icon.png" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Agregar Venta" VerticalOptions="End" HeightRequest="50" Command="{Binding GoAddSaleCommand}"/>
     </StackLayout>
 </ContentPage>
