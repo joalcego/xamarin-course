@@ -137,7 +137,6 @@ namespace Lab1JC.ViewModel
 
         private void GoAddSale()
         {
-            //CurrentPerson = PersonList.FirstOrDefault(p => p.Id == id);
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new AddSalePage());
         }
 

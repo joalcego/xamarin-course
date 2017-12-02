@@ -8,7 +8,34 @@ namespace Lab1JC.ViewModel
     public class SaleViewModel : BaseViewModel
     {
         #region Properties
-        //private SaleViewModel currentSale;
+        private ProductModel product;
+        public ProductModel Product
+        {
+            get
+            {
+                return product;
+            }
+            set
+            {
+                product = value;
+                OnPropertyChanged("Product");
+            }
+        }
+
+        private int amount;
+        public int Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount");
+            }
+        }
+
         private ObservableCollection<ProductModel> productList;
         public ObservableCollection<ProductModel> ProductList
         {
@@ -51,9 +78,14 @@ namespace Lab1JC.ViewModel
 
         private void AddSale()
         {
-            //Console.WriteLine("test");
-            int a = 0;
-            a++;
+            var sale = new SaleModel()
+            {
+                Product = this.Product,
+                Amount = this.Amount
+            };
+
+            PersonViewModel.GetInstance().CurrentPerson.Sales.Add(sale);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopAsync();
         }
 
         #endregion

@@ -5,9 +5,9 @@
              Title="Add Sale">
     <StackLayout Margin="0,20,0,0" HorizontalOptions="Fill">
         <Label Text="Producto"></Label>
-        <Picker x:Name="IndustryTypePicker1" HorizontalOptions="FillAndExpand" ItemsSource="{Binding ProductList}" ItemDisplayBinding="{Binding Description}"/> 
-        <Label Text="Total"></Label>
-        <Entry/>
-        <Button Text="Agregar Venta" VerticalOptions="End" HeightRequest="50"/>
+        <Picker x:Name="Product" HorizontalOptions="FillAndExpand" SelectedItem="{Binding Product}" ItemsSource="{Binding ProductList}" ItemDisplayBinding="{Binding Description}"/> 
+        <Label Text="Cantidad"></Label>
+        <Entry Text="{Binding Amount}"/>
+        <Button Text="Agregar Venta" VerticalOptions="End" HeightRequest="50" Command="{Binding AddSaleCommand}"/>
     </StackLayout>
 </ContentPage>
