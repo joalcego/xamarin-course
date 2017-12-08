@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:pages="clr-namespace:Lab3.View;assembly=Lab3.View"
+    x:Name="MainPage"
+    x:Class="Lab3.View.MainPage">
+    <ContentPage Title="XML">
+        <ContentPage.Content>
+            <StackLayout>
+                <ListView ItemsSource="{Binding CDList}" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Title}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="JSON">
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="JSON"  HorizontalOptions="Center"/>
+                <Image HeightRequest="30" WidthRequest="30" Source="json.png" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="REST">
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="REST" HorizontalOptions="Center"/>
+                <Image HeightRequest="30" WidthRequest="30" Source="cloud.png" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>
